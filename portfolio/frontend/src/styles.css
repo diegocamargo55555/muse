@@ -1,0 +1,195 @@
+:root {
+  --bg: #0e1113;
+  --panel: #161b1f;
+  --panel-2: #1c2329;
+  --text: #e9e6df;
+  --muted: #a8a49a;
+  --line: #2a3238;
+  --accent: #d9a441;
+  --accent-ink: #1a1405;
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+}
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+  margin-bottom: 26px;
+}
+
+.brand { font-weight: 700; font-size: 18px; letter-spacing: 0.2px; }
+.brand span { color: var(--accent); }
+.nav { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: var(--radius-s);
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 650;
+}
+.btn.danger { border-color: #7a3b3b; }
+.btn:disabled { opacity: 0.55; cursor: default; }
+
+.hero {
+  max-width: 62ch;
+  margin: 8px 0 30px;
+}
+.hero h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  font-weight: 750;
+}
+.hero p { color: var(--muted); margin: 0 0 6px; font-size: 16px; }
+.hero .meta {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 30px 0 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card h3 { margin: 0; font-size: 18px; }
+.card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-family: var(--mono);
+  font-size: 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 2px 9px;
+  color: var(--muted);
+}
+.card .row { display: flex; gap: 8px; margin-top: auto; padding-top: 6px; }
+
+.detail {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 22px;
+}
+.detail h2 { margin: 0 0 8px; font-size: 26px; }
+.detail p { color: var(--muted); }
+.kv {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px 12px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; }
+
+.form {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 18px;
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+.form label { display: grid; gap: 6px; font-size: 14px; }
+.form input, .form textarea {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  color: var(--text);
+  padding: 9px 11px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.form textarea { min-height: 84px; resize: vertical; }
+.form .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.error {
+  background: #2a1a1a;
+  border: 1px solid #7a3b3b;
+  border-radius: var(--radius-s);
+  padding: 9px 12px;
+  font-size: 14px;
+}
+.hint { color: var(--muted); font-size: 13px; }
+
+.admin-list { display: grid; gap: 8px; margin-top: 12px; }
+.admin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 9px 12px;
+  background: var(--panel-2);
+  font-size: 14px;
+}
+.admin-row .actions { display: flex; gap: 6px; }
+
+footer {
+  margin-top: 44px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,44 @@
+services:
+  api:
+    build: ./backend
+    image: mangasite-api:latest
+    restart: unless-stopped
+    environment:
+      PORT: "8080"
+      DATA_PATH: /data/library.json
+      MANGADEX_API: ${MANGADEX_API:-https://api.mangadex.org}
+    volumes:
+      - api-data:/data
+    expose:
+      - "8080"
+    networks: [web]
+    deploy:
+      resources:
+        limits: { cpus: "1.0", memory: 512M }
+        reservations: { memory: 128M }
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/api/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+
+  web:
+    build: ./frontend
+    image: mangasite-web:latest
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-3002}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks: [web]
+    deploy:
+      resources:
+        limits: { cpus: "0.50", memory: 256M }
+        reservations: { memory: 64M }
+
+networks:
+  web:
+
+volumes:
+  api-data:
